@@ -3,10 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Utility Monitoring Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        .stats, .alerts {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .stat-item, .alert-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ username }}</h1>
-    <a href="/logout">Logout</a>
+    <header>
+        <h1>Utility Monitoring Dashboard</h1>
+    </header>
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search utility by name or date..." id="searchInput">
+            <button onclick="searchUtility()">Search</button>
+        </div>
+
+        <!-- Usage Stats -->
+        <div class="stats">
+            <h2>Your Utility Usage</h2>
+            <div class="stat-item">Electricity: 120 kWh this month</div>
+            <div class="stat-item">Water: 3000 liters this month</div>
+            <div class="stat-item">Gas: 15 units this month</div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="alerts">
+            <h2>Alerts</h2>
+            <div class="alert-item">⚠️ High electricity usage detected on Jan 5th.</div>
+            <div class="alert-item">✔️ Water usage is within budget this month.</div>
+        </div>
+    </div>
+
+    <script>
+        function searchUtility() {
+            const input = document.getElementById('searchInput').value;
+            alert(`Searching for: ${input}`);
+        }
+    </script>
 </body>
 </html>
