@@ -1,26 +1,23 @@
-// Redirect to respective pages on navbar button click
 document.getElementById('resources-btn').addEventListener('click', () => {
-  window.location.href = 'resources.html'; // Replace with your actual URL for Resources
+  window.location.href = 'resources.html';
 });
 
 document.getElementById('products-btn').addEventListener('click', () => {
-  window.location.href = 'products.html'; // Replace with your actual URL for Products
+  window.location.href = 'products.html';
 });
 
 document.getElementById('ai-btn').addEventListener('click', () => {
-  window.location.href = 'ai.html'; // Replace with your actual URL for AI
+  window.location.href = 'ai.html';
 });
 
 document.getElementById('conservation-plans-btn').addEventListener('click', () => {
-  window.location.href = 'conservation-plans.html'; // Replace with your actual URL for Conservation Plans
+  window.location.href = 'conservation-plans.html';
 });
 
 document.getElementById('about-btn').addEventListener('click', () => {
-  window.location.href = 'about.html'; // Replace with your actual URL for About
+  window.location.href = 'about.html';
 });
 
-
-// Sidebar toggle functionality
 const sidebar = document.getElementById('sidebar');
 const toggleButton = document.getElementById('sidebarToggle');
 const mainContent = document.querySelector('.main-content');
@@ -30,65 +27,127 @@ toggleButton.addEventListener('click', () => {
   mainContent.classList.toggle('expanded');
 });
 
-// Redirect to respective pages on button click
 document.getElementById('notifications-btn').addEventListener('click', () => {
-  window.location.href = 'notifications.html'; // Replace with your actual URL
+  window.location.href = 'notifications.html';
 });
 
 document.getElementById('conservation-btn').addEventListener('click', () => {
-  window.location.href = 'conservation.html'; // Replace with your actual URL
+  window.location.href = 'conservation.html';
 });
 
 document.getElementById('electrocoins-btn').addEventListener('click', () => {
-  window.location.href = 'electrocoins.html'; // Replace with your actual URL
+  window.location.href = 'electrocoins.html';
 });
 
 document.getElementById('gov-sites-btn').addEventListener('click', () => {
-  window.location.href = 'gov-sites.html'; // Replace with your actual URL
+  window.location.href = 'gov-sites.html';
 });
 
-// AI Bot activation
 document.getElementById('ai-bot').addEventListener('click', () => {
   alert('AI Bot Activated!');
 });
 
-// Username click - user details page
 document.getElementById('username').addEventListener('click', () => {
-  window.location.href = 'user-details.html'; // Replace with actual user details page URL
+  window.location.href = 'user-details.html';
 });
 
-// Example function to fetch data from API (replace URL and key as needed)
-async function fetchUsageData(date) {
-  const response = await fetch(`https://api.example.com/usage?date=${date}`);
+// Function to fetch data from JSON file
+async function fetchUsageData() {
+  const response = await fetch('/database/Usage.json');
   const data = await response.json();
   return data;
 }
 
-// Function to update the dashboard with fetched data
-function updateDashboard(data) {
-  document.getElementById('electricity-day').textContent = `${data.electricity.day} kWh`;
-  document.getElementById('electricity-week').textContent = `${data.electricity.week} kWh`;
-  document.getElementById('electricity-month').textContent = `${data.electricity.month} kWh`;
-
-  document.getElementById('gas-day').textContent = `${data.gas.day} m³`;
-  document.getElementById('gas-week').textContent = `${data.gas.week} m³`;
-  document.getElementById('gas-month').textContent = `${data.gas.month} m³`;
-
-  document.getElementById('water-day').textContent = `${data.water.day} L`;
-  document.getElementById('water-week').textContent = `${data.water.week} L`;
-  document.getElementById('water-month').textContent = `${data.water.month} L`;
+// Function to filter data based on selected date
+function filterDataByDate(data, date) {
+  const filteredData = { ...data };
+  ['electricity', 'gas', 'water'].forEach((key) => {
+    const usageEntry = data[key].usageData.find((entry) => entry.time === date);
+    filteredData[key].day = usageEntry ? `${usageEntry.value} ${key === 'water' ? 'L' : key === 'gas' ? 'm³' : 'kWh'}` : 'No data';
+  });
+  return filteredData;
 }
 
-// Setup search button functionality
+// Function to update the dashboard with fetched data
+function updateDashboard(data) {
+  document.getElementById('electricity-day').textContent = data.electricity.day;
+  document.getElementById('electricity-week').textContent = data.electricity.week;
+  document.getElementById('electricity-month').textContent = data.electricity.month;
+
+  document.getElementById('gas-day').textContent = data.gas.day;
+  document.getElementById('gas-week').textContent = data.gas.week;
+  document.getElementById('gas-month').textContent = data.gas.month;
+
+  document.getElementById('water-day').textContent = data.water.day;
+  document.getElementById('water-week').textContent = data.water.week;
+  document.getElementById('water-month').textContent = data.water.month;
+
+  updateChart('electricity-chart', data.electricity.usageData);
+  updateChart('gas-chart', data.gas.usageData);
+  updateChart('water-chart', data.water.usageData);
+}
+
+// Function to update the usage charts
+function updateChart(chartId, usageData) {
+  const ctx = document.getElementById(chartId).getContext('2d');
+  const labels = usageData.map(entry => entry.time);
+  const data = usageData.map(entry => entry.value);
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Usage Over Time',
+        data: data,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+          },
+          title: {
+            display: true,
+            text: 'Time'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Usage'
+          }
+        }
+      }
+    }
+  });
+}
+
+// Search button event handler
 document.getElementById('search-btn').addEventListener('click', async () => {
-  const date = document.getElementById('search-date').value;
-  if (date) {
-    const usageData = await fetchUsageData(date);
-    updateDashboard(usageData);
+  const dateInput = document.getElementById('search-date').value;
+  const searchResultElement = document.querySelector('#block1 .search-result p');
+  
+  if (dateInput) {
+    const usageData = await fetchUsageData();
+    const filteredData = filterDataByDate(usageData, dateInput);
+
+    // Display search results
+    searchResultElement.textContent = `Electricity: ${filteredData.electricity.day}, Gas: ${filteredData.gas.day}, Water: ${filteredData.water.day}`;
   } else {
     alert('Please select a date.');
+    searchResultElement.textContent = 'No data to display.';
   }
 });
 
-
-
+document.addEventListener('DOMContentLoaded', async () => {
+  const usageData = await fetchUsageData();
+  updateDashboard(usageData);
+});

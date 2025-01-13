@@ -259,93 +259,113 @@ body {
   flex: 1;
 }
 
-#block2 {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #232323;
-}
-
-.dashboard {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  padding: 30px;
-  background-color: #000000;
-  display: flex;
+/* Move this to styles related to Block 1 */
+/* Styles for Block1 and its contents */
+#block1 {
+  display: block;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: center;  /* Center content horizontally */
+  justify-content: center;  /* Center content vertically */
+  width: 80%;  /* Increase width, adjust as needed for your layout */
+  min-height: 300px;  /* Adjust based on desired height */
+  margin: 100px 100px 100px 100px;  /* Center block within its container */
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#Block2Heading {
-  font-size: 2em;
-  color: rgba(157, 0, 255);
-  margin-bottom: 20px;
-  transition: color 0.3s, text-shadow 0.3s;
-}
-
-#Block2Heading:hover {
-  color: #923cb5;
-  text-shadow: 0px 0px 50px #923cb5;
-}
-
-.search-bar {
+#block1 .search-bar {
+  width: 100%;  /* Make search bar take full width */
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  width: 100%;
+  justify-content: center;  /* Center search input and button */
+  margin-bottom: 20px;
+  gap: 10px;
 }
 
-#search-date {
-  flex: 1;
-  padding: 15px;
-  border-radius: 5px 0 0 5px;
-  border: 1px solid #ccc;
-  outline: none;
+#block1 .search-bar input[type="date"] {
+  flex: 1;  /* Allow input to take proportional space */
+  padding: 5px;
   font-size: 16px;
 }
 
-#search-btn {
-  padding: 15px;
-  border-radius: 0 5px 5px 0;
-  border: 1px solid #ccc;
+#block1 .search-bar button {
+  padding: 5px 10px;
+  font-size: 16px;
   background-color: rgb(63, 0, 113);
-  color: #fff;
+  color: white;
+  border: none;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-#search-btn:hover {
+#block1 .search-bar button:hover {
   background-color: rgb(251, 37, 118);
 }
 
-.usage-stats {
+#block1 .search-result {
+  margin-top: 20px;
+  width: 100%;  /* Ensuring it matches the search bar width */
+  background-color: #eaeaea;
+  padding: 10px;
+  border-radius: 8px;
+  color: rgb(21, 0, 80);
+  text-align: center;
+}
+
+
+/* Styles for Block2 and its contents */
+#block2 {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  flex-grow: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;  /* Adjust this value as needed */
+  height: auto;  /* Ensure height fits content dynamically */
+  min-height: 400px; /* Sets a minimum height */
+  padding: 20px;
+  background-color: #020000;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Add some margin between blocks */
+}
+
+.usage-container {
+  width: 100%; /* Ensures usage-container takes full page width */
+  margin: 0 auto; /* Centers container horizontally if there is any margin */
 }
 
 .usage-category {
-  background-color: #eaeaea;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Keep elements stacked vertically */
+  align-items: flex-start; /* Align text to the left */
+  justify-content: flex-start; /* Start aligning the elements from the top */
+  width: 100%; /* Full width for each usage category */
+  min-height: 250px; /* Keep the increased height */
+  background-color: #f8f8f8; /* Light background for contrast */
+  border-radius: 10px; /* Rounded corners */
   padding: 20px;
-  width: 30%;
-  text-align: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  margin-bottom: 20px; /* Space between category sections */
 }
 
 .usage-category h3 {
   font-size: 1.5em;
-  margin-bottom: 10px;
-  color: rgb(63, 0, 113);
+  margin-bottom: 10px; /* Space below heading */
+  color: rgb(63, 0, 113); /* Heading color */
 }
 
 .usage-category p {
   font-size: 1.2em;
-  margin: 10px 0;
+  margin: 5px 0; /* Spacing between paragraphs */
+}
+
+canvas {
+  width: 100% !important; /* Canvas occupies full width */
+  height: 100% !important; /* Adjust height to fill the parent */
+  background-color: #ffffff; /* White canvas background for clarity */
+  border: 2px solid #ccc; /* Light grey border for definition */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow */
+  align-self: center; /* Center canvas within parent flex element */
+  margin-top: 20px; /* Gap between stats and chart */
 }

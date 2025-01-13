@@ -23,21 +23,18 @@
 
     <!-- Main Content -->
     <div class="main-content expanded">
-      
-     <!-- Navbar -->
-     <div class="navbar">
-      <button class="nav-item" id="resources-btn">Resources</button>
-      <button class="nav-item" id="products-btn">Products</button>
-      <button class="nav-item" id="ai-btn">AI</button>
-      <button class="nav-item" id="conservation-plans-btn">Conservation Plans</button>
-      <button class="nav-item" id="about-btn">About</button>
-      <div class="icons">
-        <div class="icon" id="bell-icon">🔔</div>
-        <div class="icon" id="coin-icon">💰</div>
+      <!-- Navbar -->
+      <div class="navbar">
+        <button class="nav-item" id="resources-btn">Resources</button>
+        <button class="nav-item" id="products-btn">Products</button>
+        <button class="nav-item" id="ai-btn">AI</button>
+        <button class="nav-item" id="conservation-plans-btn">Conservation Plans</button>
+        <button class="nav-item" id="about-btn">About</button>
+        <div class="icons">
+          <div class="icon" id="bell-icon">🔔</div>
+          <div class="icon" id="coin-icon">💰</div>
+        </div>
       </div>
-    </div>
-    
-
 
       <!-- Content Wrapper -->
       <div class="content-wrapper">
@@ -47,55 +44,56 @@
               <source src="/frontend/Static/Video/BGclip.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-            <h1 id="Energy"> Energy</h1>
-            <h1 id="Second-Heading"> Utility Monitoring</h1>
+            <h1 id="Energy">Energy</h1>
+            <h1 id="Second-Heading">Utility Monitoring</h1>
             <p id="para1">Experience seamless tracking and management of your electricity. Optimize your consumption with real-time data, presented in a user-friendly web interface.</p>
           </div>
-          
-          
+
           <!-- New Blocks -->
           <div class="blocks-container">
             <div class="block" id="block1">
-              <img src="path/to/image1.jpg" alt="Image 1" class="block-image">
-              <p class="block-description">Description for Image 1 lorem*10</p>
+              <!-- Search Bar -->
+              <div class="search-bar">
+                <input type="date" id="search-date" placeholder="Select a date">
+                <button id="search-btn">Search</button>
+              </div>
+              
+              <!-- Search Result Display -->
+              <div class="search-result">
+                <h3>Search Results</h3>
+                <p>No data to display.</p>
+              </div>
             </div>
+
             <div class="block" id="block2">
-              <div class="dashboard">
-                <h2 id="Block2Heading">Energy Utility Monitoring Dashboard</h2>
-                <div class="search-bar">
-                  <input type="date" id="search-date" placeholder="Search by Date">
-                  <button id="search-btn">Search</button>
-                </div>
+              <!-- Usage Container (Search bar removed) -->
+              <div class="usage-container">
                 <div class="usage-stats">
                   <div class="usage-category" id="electricity-usage">
                     <h3>Electricity</h3>
                     <p>Day: <span id="electricity-day">0 kWh</span></p>
                     <p>Week: <span id="electricity-week">0 kWh</span></p>
                     <p>Month: <span id="electricity-month">0 kWh</span></p>
-                    <canvas id="electricity-graph"></canvas>
+                    <canvas id="electricity-chart"></canvas>
                   </div>
-                  
                   <div class="usage-category" id="gas-usage">
                     <h3>Gas</h3>
                     <p>Day: <span id="gas-day">0 m³</span></p>
                     <p>Week: <span id="gas-week">0 m³</span></p>
                     <p>Month: <span id="gas-month">0 m³</span></p>
-                    <canvas id="gas-graph"></canvas>
+                    <canvas id="gas-chart"></canvas>
                   </div>
-                
                   <div class="usage-category" id="water-usage">
                     <h3>Water</h3>
                     <p>Day: <span id="water-day">0 L</span></p>
                     <p>Week: <span id="water-week">0 L</span></p>
                     <p>Month: <span id="water-month">0 L</span></p>
-                    <canvas id="water-graph"></canvas>
+                    <canvas id="water-chart"></canvas>
                   </div>
-                </div>                
+                </div>
               </div>
             </div>
-            
-            
-            
+
             <div class="block" id="block3">
               <img src="path/to/image3.jpg" alt="Image 3" class="block-image">
               <p class="block-description">Description for Image 3</p>
@@ -121,6 +119,7 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="/frontend/Static/Scripts/script.js"></script>
 </body>
 </html>
