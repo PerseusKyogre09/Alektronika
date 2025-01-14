@@ -334,38 +334,51 @@ body {
   margin: 0 auto; /* Centers container horizontally if there is any margin */
 }
 
+.usage-heading {
+  font-size: 10em;
+  color: white;
+  margin-bottom: 20px; /* Space below heading */
+}
+
 .usage-category {
+  color: white;
   display: flex;
   flex-direction: column; /* Keep elements stacked vertically */
-  align-items: flex-start; /* Align text to the left */
+  align-items: center; /* Align text to the left */
   justify-content: flex-start; /* Start aligning the elements from the top */
   width: 100%; /* Full width for each usage category */
   min-height: 250px; /* Keep the increased height */
-  background-color: #f8f8f8; /* Light background for contrast */
+  background-color: #000000; /* Light background for contrast */
   border-radius: 10px; /* Rounded corners */
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   margin-bottom: 20px; /* Space between category sections */
 }
 
-.usage-category h3 {
-  font-size: 1.5em;
+#UsageHead{
+  padding: 20px 20px 20px 20px;
+  font-size: 3em;
   margin-bottom: 10px; /* Space below heading */
-  color: rgb(63, 0, 113); /* Heading color */
+  color: rgb(95, 13, 162);
+  text-decoration: underline;
+  text-decoration-color: rgb(95, 13, 162);
+  text-decoration-style: plain;
+  text-underline-position: 1px; /* Heading color */
 }
+
+#UsageHead:hover {
+  border-color: #923cb5;
+    color:#923cb5;
+    text-shadow: 0px 0px 100px rgba(146,60,181,1);
+    
+    text-decoration-color: goldenrod;
+}
+
 
 .usage-category p {
-  font-size: 1.2em;
+  font-size: 2.5em;
   margin: 5px 0; /* Spacing between paragraphs */
+  padding: 20px 20px 20px 20px; /* Padding for content */
 }
 
-canvas {
-  width: 100% !important; /* Canvas occupies full width */
-  height: 100% !important; /* Adjust height to fill the parent */
-  background-color: #ffffff; /* White canvas background for clarity */
-  border: 2px solid #ccc; /* Light grey border for definition */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow */
-  align-self: center; /* Center canvas within parent flex element */
-  margin-top: 20px; /* Gap between stats and chart */
-}
+
