@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpage Structure</title>
-  <link rel="stylesheet" href="/frontend/Static/Stylesheets/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Stylesheets/style.css') }}">
 </head>
 <body>
   <div class="container">
@@ -41,7 +41,7 @@
         <div class="content-area">
           <div class="full-area">
             <video autoplay muted loop id="background-video">
-              <source src="/frontend/Static/Video/BGclip.mp4" type="video/mp4">
+              <source src="{{ url_for('static', filename='Video/BGclip.mp4') }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <h1 id="Energy">Energy</h1>
@@ -105,19 +105,19 @@
             </div>
 
             <div class="block" id="block3">
-              <img src="path/to/image3.jpg" alt="Image 3" class="block-image">
+              <img src="{{ url_for('static', filename='images/image3.jpg') }}" alt="Image 3">
               <p class="block-description">Description for Image 3</p>
             </div>
             <div class="block" id="block4">
-              <img src="path/to/image4.jpg" alt="Image 4" class="block-image">
+              <img src="{{ url_for('static', filename='images/image4.jpg') }}" alt="Image 4">
               <p class="block-description">Description for Image 4</p>
             </div>
             <div class="block" id="block5">
-              <img src="path/to/image5.jpg" alt="Image 5" class="block-image">
+              <img src="{{ url_for('static', filename='images/image5.jpg') }}" alt="Image 5">
               <p class="block-description">Description for Image 5</p>
             </div>
             <div class="block" id="block6">
-              <img src="path/to/image6.jpg" alt="Image 6" class="block-image">
+              <img src="{{ url_for('static', filename='images/image6.jpg') }}" alt="Image 6">
               <p class="block-description">Description for Image 6</p>
             </div>
           </div>
@@ -130,6 +130,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/frontend/Static/Scripts/script.js"></script>
+  <script src="{{ url_for('static', filename='Scripts/script.js') }}"></script>
 </body>
 </html>

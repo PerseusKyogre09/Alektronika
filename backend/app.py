@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash, send_from_directory
 from dotenv import load_dotenv
 import os
 from auth import register_user, authenticate_user
@@ -8,15 +8,21 @@ import db
 load_dotenv()
 
 # Initialize Flask app
-app = Flask(__name__, template_folder="../frontend/templates")
+app = Flask(__name__, 
+            template_folder="../frontend/templates", 
+            static_folder="../frontend/static")
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Home Route
 @app.route('/')
 def home():
     if 'user' in session:
-        return render_template('index.html', username=session['user'])
+        return render_template('IndexMain.html', username=session['user'])
     return redirect('/login')
+
+@app.route('/database/<filename>')
+def serve_database_file(filename):
+    return send_from_directory('../database', filename)
 
 # Login Route
 @app.route('/login', methods=['GET', 'POST'])
