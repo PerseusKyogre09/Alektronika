@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webpage Structure</title>
+  <link rel="stylesheet" href="/frontend/Static/Stylesheets/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Toggle Button -->
+    <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="profile-pic"></div>
+      <p class="username" id="username">USER 1</p>
+      <button class="sidebar-btn" id="notifications-btn">Notifications</button>
+      <button class="sidebar-btn" id="conservation-btn">Conservation Plans</button>
+      <button class="sidebar-btn" id="electrocoins-btn">Electrocoins</button>
+      <button class="sidebar-btn" id="gov-sites-btn">Government Sites</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content expanded">
+      <!-- Navbar -->
+      <div class="navbar">
+        <button class="nav-item" id="resources-btn">Resources</button>
+        <button class="nav-item" id="products-btn">Products</button>
+        <button class="nav-item" id="ai-btn">AI</button>
+        <button class="nav-item" id="conservation-plans-btn">Conservation Plans</button>
+        <button class="nav-item" id="about-btn">About</button>
+        <div class="icons">
+          <div class="icon" id="bell-icon">🔔</div>
+          <div class="icon" id="coin-icon">💰</div>
+        </div>
+      </div>
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        <div class="content-area">
+          <div class="full-area">
+            <video autoplay muted loop id="background-video">
+              <source src="/frontend/Static/Video/BGclip.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <h1 id="Energy">Energy</h1>
+            <h1 id="Second-Heading">Utility Monitoring</h1>
+            <p id="para1">Experience seamless tracking and management of your electricity. Optimize your consumption with real-time data, presented in a user-friendly web interface.</p>
+          </div>
+
+          <!-- New Blocks -->
+          <div class="blocks-container">
+            <div class="block" id="block1">
+              <!-- Search Bar -->
+              <div class="search-bar">
+                <input type="date" id="search-date" placeholder="Select a date">
+                <button id="search-btn">Search</button>
+              </div>
+              
+              <!-- Search Result Display -->
+              <div class="search-result">
+                <h3>Search Results</h3>
+                <p>No data to display .</p>
+              </div>
+            </div>
+
+            <div class="block" id="block2">
+              <!-- Usage Container (Search bar removed) -->
+              <div class="usage-container">            
+                <div class="usage-stats">
+                  <div class="usage-category" id="electricity-usage">
+                    <h1 id="UsageHead" style="text-align: center;">Electricity Usage</h1>
+                    <p>Day: <span id="electricity-day">0 kWh</span></p>
+                    <p>Week: <span id="electricity-week">0 kWh</span></p>
+                    <p>Month: <span id="electricity-month">0 kWh</span></p>
+                    <!-- <canvas id="electricity-chart"></canvas> -->
+                    <div style="width: 80%; margin: auto;">
+                      <canvas id="electricityChart"></canvas>
+                    </div>
+                  </div>
+                  <div class="usage-category" id="gas-usage">
+                    <h1 id="UsageHead" style="text-align: center;">Gas Usage</h1>
+                    <p>Day: <span id="gas-day">0 m³</span></p>
+                    <p>Week: <span id="gas-week">0 m³</span></p>
+                    <p>Month: <span id="gas-month">0 m³</span></p>
+                    <!-- <canvas id="gas-chart"></canvas> -->
+                    
+                    <div style="width: 80%; margin: auto;">
+                      <canvas id="gasChart"></canvas>
+                    </div>
+                  </div>
+                  <div class="usage-category" id="water-usage">
+                    <h1 id="UsageHead" style="text-align: center;">Water Usage</h1>                    
+                    <p>Day: <span id="water-day">0 L</span></p>
+                    <p>Week: <span id="water-week">0 L</span></p>
+                    <p>Month: <span id="water-month">0 L</span></p>
+                    <!-- <canvas id="water-chart"></canvas> -->
+                    <div style="width: 80%; margin: auto;">
+                      <canvas id="waterChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block" id="block3">
+              <img src="path/to/image3.jpg" alt="Image 3" class="block-image">
+              <p class="block-description">Description for Image 3</p>
+            </div>
+            <div class="block" id="block4">
+              <img src="path/to/image4.jpg" alt="Image 4" class="block-image">
+              <p class="block-description">Description for Image 4</p>
+            </div>
+            <div class="block" id="block5">
+              <img src="path/to/image5.jpg" alt="Image 5" class="block-image">
+              <p class="block-description">Description for Image 5</p>
+            </div>
+            <div class="block" id="block6">
+              <img src="path/to/image6.jpg" alt="Image 6" class="block-image">
+              <p class="block-description">Description for Image 6</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-bot" id="ai-bot">
+        🤖
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/frontend/Static/Scripts/script.js"></script>
+</body>
+</html>
